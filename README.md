@@ -1,2 +1,2 @@
 # MLP
-Modular MLP in Python from scratch only numpy
+Modular MLP in Python from scratch
