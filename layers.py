@@ -44,3 +44,17 @@ class Sigmoid:
 
   def dy_dx(self):
     return (1-self.y)*self.y
+  
+class Relu:
+  def __init__(self):
+    self.x = None
+    self.y = None
+    self.trainable = False
+
+  def forward(self, x):
+    self.x = x
+    self.y = np.maximum(0, x)
+    return self.y
+
+  def dy_dx(self):
+    return (self.x > 0) * 1
