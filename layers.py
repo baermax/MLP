@@ -39,7 +39,7 @@ class Sigmoid:
 
   def forward(self, x):
     self.x = x
-    self.y = 1 / (np.exp(-x))
+    self.y = 1 / (1 + np.exp(-x))
     return self.y
 
   def dy_dx(self):
