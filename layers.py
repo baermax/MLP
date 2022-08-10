@@ -1,10 +1,10 @@
 import numpy as np
 
-class FullyConnectedLayer:
+class DenseLayer:
   def __init__(self, inputs, outputs):
     self.inputs = inputs
     self.outputs = outputs
-    self.weight = np.random.rand(outputs, inputs)
+    self.weight = np.random.normal(size=(outputs, inputs))/self.inputs
     self.bias = np.zeros((outputs, 1))
     self.x = None
     self.y = None
@@ -53,8 +53,22 @@ class Relu:
 
   def forward(self, x):
     self.x = x
-    self.y = np.maximum(0, x)
+    self.y = np.maximum(0.0, x)
     return self.y
 
   def dy_dx(self):
-    return (self.x > 0) * 1
+    return (self.x > 0) * 1.0
+
+class Flatten:
+  def __init__(self):
+    self.x = None
+    self.y = None
+    self.trainable = False
+
+  def forward(self, x):
+    self.x = x
+    self.y = x.reshape(-1, 1)
+    return self.y
+
+  def dy_dx(self):
+    return self.y.reshape(self.y.shape)
