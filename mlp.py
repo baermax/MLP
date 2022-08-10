@@ -50,4 +50,4 @@ class MLP:
       for i in range(len(x_train)):
         self.forward(x_train[i])
         current_loss += self.back(encode(y_train[i], 10), lr)
-      print(f"ACCURACY {self.validate(x_test, y_test)*100}% LOSS {current_loss}")
+      print(f"Training {round(e+1/epochs*100, ndigits=2)}% completed: Test ACCURACY {round(self.validate(x_test, y_test)*100, ndigits=2)}%, Training ACCURACY {round(self.validate(x_train[:500], y_train[:500])*100, ndigits=2)}%,  LOSS {current_loss}") # ideally the training data accuracy should be tested on random samples
